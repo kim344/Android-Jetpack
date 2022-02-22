@@ -3,7 +3,7 @@ package com.kim344.jetpackseries.room
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "informEntity")
+@Entity
 data class Inform(
     var name: String,
     var gender: String,

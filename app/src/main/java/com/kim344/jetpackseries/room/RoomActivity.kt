@@ -18,12 +18,22 @@ class RoomActivity : AppCompatActivity() {
         binding = ActivityRoomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = Room.databaseBuilder(this, InformDatabase::class.java, "informDB").allowMainThreadQueries().build()
+        db = InformDatabase.getInstance(this)
+        selectInformData()
 
         binding.btnInsert.setOnClickListener {
             insertInformData()
             selectInformData()
         }
+
+        binding.btnDelete.setOnClickListener {
+            deleteAllInformData()
+            selectInformData()
+        }
+    }
+
+    private fun deleteAllInformData() {
+        db?.informDao()?.deleteAll()
     }
 
     private fun selectInformData(){
@@ -32,7 +42,7 @@ class RoomActivity : AppCompatActivity() {
         var informData = ""
         informDataList?.let {
             for (data in it){
-                informData += "\n ${data.name}, ${data.gender}, ${data.phoneNumber}"
+                informData += "\n ${data.name} / ${data.gender} / ${data.phoneNumber}"
             }
         }
 

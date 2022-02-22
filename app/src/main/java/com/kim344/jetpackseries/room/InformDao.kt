@@ -14,7 +14,9 @@ interface InformDao {
     @Delete
     fun delete(inform: Inform)
 
-    @Query("SELECT * FROM informEntity")
+    @Query("SELECT * FROM Inform")
     fun selectAll(): List<Inform>
 
+    @Query("DELETE FROM Inform ")
+    fun deleteAll()
 }
