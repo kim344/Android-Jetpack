@@ -19,4 +19,8 @@ interface InformDao {
 
     @Query("DELETE FROM Inform ")
     fun deleteAll()
+
+    @Query("SELECT * FROM Inform WHERE name = :name")
+    fun selectByName(name: String)
+
 }
